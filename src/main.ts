@@ -11,7 +11,7 @@ async function bootstrap() {
     methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     preflightContinue: false,
   })
-  app.setGlobalPrefix('pokedex-api');
+  app.setGlobalPrefix('pokedex-backend');
   
   await app.listen(3000);
 }

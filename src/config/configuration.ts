@@ -7,6 +7,7 @@ export default () => ({
             items: '954',
         },
         baseUrl: 'https://pokeapi.co/api/v2',
+        imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/',
         pokemonUrl: '/pokemon',
     },
 });
