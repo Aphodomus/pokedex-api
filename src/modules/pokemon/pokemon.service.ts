@@ -58,4 +58,8 @@ export class PokemonService {
     getPokemonImages(index: string) {
         return `${this.pokeapi.imageUrl}${index}.svg`;
     }
+
+    findPokemon(value: string) {
+        return this.httpService.get(`${this.pokeapi.baseUrl}/pokemon/${value}`).pipe();
+    }
 }

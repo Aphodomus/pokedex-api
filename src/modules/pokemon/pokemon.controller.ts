@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param } from '@nestjs/common';
+import { get } from 'http';
 import { PokemonService } from './pokemon.service';
 
 @Controller('pokemon')
@@ -26,13 +27,17 @@ export class PokemonController {
         return this.pokemons;
     }
 
+    @Get(':id')
+    async searchPokemon(value: string) {
+        if (value === '') {
+            this.offset = 0;
+            this.getPokemon();
+            return
+        }
+    }
+
     @Get('all')
     async findAll() {
         return this.pokemonService.findAll();
-    }
-
-    @Get(':id')
-    async findById(@Param('id') id: string) {
-        return this.pokemonService.findById(id);
     }
 }
