@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { DefaultService } from 'src/service/default.service';
+import { DefaultService } from 'src/services/default.service';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { map } from 'rxjs/operators';
