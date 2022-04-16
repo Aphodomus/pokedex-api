@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, Unique, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Entity, Unique, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, AfterLoad, AfterInsert, AfterUpdate } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 @Entity()
@@ -40,5 +40,14 @@ export class UserEntity extends BaseEntity {
     async checkPassword(password: string): Promise<boolean> {
         const hash = await bcrypt.hash(password, this.salt);
         return hash === this.password;
+    }
+
+    @AfterLoad()
+    @AfterInsert()
+    @AfterUpdate()
+    async nullChecks() {
+        if (!this.favorites) {
+        this.favorites = [];
+        }
     }
 }

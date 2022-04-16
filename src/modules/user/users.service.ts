@@ -84,8 +84,10 @@ export class UsersService {
     user.password = password ? password : user.password;
     user.status = status === undefined ? user.status : status;
 
-    if (favorites) {
-      user.favorites.forEach((favorite) => { user.favorites.push(favorite)});
+    if (favorites != null) {
+      if (user.favorites.indexOf(favorites[0]) === -1) {
+        user.favorites[user.favorites.length] = favorites[0];
+      }
     }
 
     try {
