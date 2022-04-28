@@ -20,7 +20,7 @@ export class AuthService {
         }
     }
 
-    async signIn(credentialsDto: CredentialsDto) {
+    async signIn(credentialsDto: CredentialsDto): Promise<any> {
         const user = await this.usersService.checkCredentials(credentialsDto);
 
         if (user === null) {
@@ -32,6 +32,6 @@ export class AuthService {
         };
         const token = this.jwtService.sign(jwtPayload);
 
-        return { token };
+        return { name: user.name, token: token };
     }
 }
